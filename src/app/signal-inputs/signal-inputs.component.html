@@ -1,1 +1,48 @@
 <h5>Signal Inputs</h5>
+<p>
+  We can now create inputs that are signals. This is done with the <code>input</code> function. These inputs are <em>read-only.</em>
+</p>
+<pre>
+value = input(0);  
+</pre>
+<p>
+  You bind to them the same way as the original style &#64;Input()s.
+</p>
+<pre>
+&lt;custom-slider [value]="50" /&gt; 
+</pre>
+<p>
+  The type is inferred from the default value, or you cans specify it with a generic (more readable).
+</p>
+<pre>
+value = input&lt;number&gt;(); //Type is actually number|undefined since we aren't providing a default value
+</pre>
+<p>
+  You can make an input <em>required</em>.
+</p>
+<pre>
+value = input.required&lt;number&gt;(); 
+</pre>
+<p>
+  You can also provide <em>configuration</em> for an input to do things like transformation and aliasing (should be avoided).
+</p>
+<pre>
+label = input('', {{'{'}}transform: trimString{{'}'}}); 
+</pre>
+<p>
+  You can find the official docs, which go into more detail, <a href="https://angular.dev/guide/components/inputs" target="_blank">here</a>.
+</p>
+<p>
+  Here is a child component which uses a Signal input.
+</p>
+<p>
+  <app-signal-input-example userName="james t kirk"></app-signal-input-example>
+</p>
+<div class="row mt-4 mb-4">
+  <div class="col-6 text-start">
+    <button routerLink="/signals-with-on-push" class="btn btn-primary">Previous: Signals with On-Push</button>
+  </div>
+  <div class="col-6 text-end">
+    <button routerLink="/model-inputs" class="btn btn-primary">Next: Model Inputs</button>
+  </div>
+</div>

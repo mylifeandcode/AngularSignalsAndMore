@@ -1,7 +1,7 @@
 <h2>OnPush Change Detection</h2>
 <div class="row">
   <div class="col-12">
-    We haven't made much use of <span style="font-style: italic;">OnPush change detection</span>, but it's something that can improve performance a bit.
+    We haven't made much use of <em>OnPush change detection</em>, but it's something that can improve performance a bit.
   </div>
 </div>
 
@@ -28,7 +28,7 @@
     <p>
       This must be used carefully, as it could have unintended side-effects. The component below uses OnPush change detection.
       It will react to changes made to its &#64;Input(), and from an event (like a button click) but not from within itself. 
-      An interval is updating the <span style="font-style: italic;">currentTime</span> variable every second, and logging it to 
+      An interval is updating the <em>currentTime</em> variable every second, and logging it to 
       the console, but because of the OnPush change detection, its latest value will only be rendered when something else triggers 
       change detection.
     </p>
@@ -50,7 +50,7 @@
 <div class="row mt-4">
   <div class="col-12">
     Another thing to watch out for: Using OnPush on a component that has child components. Even if the child components don't 
-    use OnPush, the fact that they are <span style="font-style: italic;">within</span> a component that does will affect how 
+    use OnPush, the fact that they are <em>within</em> a component that does will affect how 
     change detection works for them.
   </div>
 </div>

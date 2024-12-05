@@ -34,6 +34,10 @@ export const routes: Routes = [
     loadComponent: () => import('./signal-inputs/signal-inputs.component').then(c => c.SignalInputsComponent)
   },  
   {
+    path: 'model-inputs',
+    loadComponent: () => import('./model-inputs/model-inputs.component').then(c => c.ModelInputsComponent)
+  },  
+  {
     path: '**',
     redirectTo: ''
   }  
