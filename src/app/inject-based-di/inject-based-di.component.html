@@ -1,0 +1,43 @@
+<h2>Inject-Based Dependency Injection</h2>
+<div class="row mt-4">
+  <div class="col-12">
+    Angular has introduced a new way of dependency injection.
+    This new way is uses <a href="https://angular.dev/api/core/inject" target="_blank">the inject function</a>.
+    The inject function "offers more accurate types and better compatibility with standard decorators, compared to
+    constructor-based injection." (official quote)
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-6">
+    <div class="row widget">
+      Old way
+      <div class="col-12 mt-2">
+        <pre class="code-sample">
+          &#64;Component()
+          export class WidgetComponent {{ '{' }}
+            constructor(private _service: SomeService){{ '{}' }}
+          {{ '}' }}
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="row widget">
+      New way
+      <div class="col-12 mt-2">
+        <pre class="code-sample">
+          &#64;Component()
+          export class WidgetComponent {{ '{' }}
+          &nbsp;&nbsp;private _service = inject(SomeService);
+          {{ '}' }}
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-6"><button routerLink="/start" class="btn btn-primary">Go Back (for some strange reason)</button>
+  </div>
+  <div class="col-6 text-end"><button routerLink="/on-push" class="btn btn-primary">Next: OnPush Change
+      Detection</button></div>
+</div>

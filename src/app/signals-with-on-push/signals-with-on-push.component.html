@@ -1,0 +1,18 @@
+<h5>Signals with OnPush Components</h5>
+<p>
+  Remember how we talked about OnPush change detection a few pages ago? Well, signals work fine in OnPush components. Unlike our 
+  previous example where the current time was being set to a string, but not updated unless some other event triggered change 
+  detection, here we reference the signal in the template, and the template updates every time the signal does.
+</p>
+<p>
+  <app-signal-on-push-example/>
+</p>
+
+<div class="row mt-4 mb-4">
+  <div class="col-6 text-start">
+    <button routerLink="/signals-intro" class="btn btn-primary">Previous: Signals Intro</button>
+  </div>
+  <div class="col-6 text-end">
+    <button routerLink="/signal-inputs" class="btn btn-primary">Next: Signal Inputs</button>
+  </div>
+</div>

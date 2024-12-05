@@ -1,0 +1,102 @@
+<h2>Signals</h2>
+<p>
+  Signals are now Production Ready. We did some training on Signals back in September of 2023. You can revisit that <a href="https://github.com/mylifeandcode/AngularSignalsExercise" target="_blank">here.</a>
+</p>
+<p>
+  A signal is a wrapper around a value that notifies interested consumers when that value changes. Signals can contain any value, from primitives to complex data structures.
+</p>
+<p>
+  You read a signal's value by calling its getter function, which allows Angular to track where the signal is used.
+</p>
+<p>
+  Signals may be either writable or read-only.    
+</p>
+<p>
+  Here are the basics (taken directly from the official docs as of 12/4/2024).
+</p>
+<div class="row widget">
+  <div class="col-4">
+    <h5>signal</h5>
+    <p>
+      Writable signals provide an API for updating their values directly. You create writable signals by calling the 
+      <code>signal</code> function with the signal's initial value:
+    </p>
+    <pre>
+const count = signal(0);
+
+//Signals are functions. Call them
+//to read the value.
+console.log('The count is: ' + count());
+
+//Change the value with .set():
+count.set(3);
+
+//Use .update() to compute a new value from a 
+//previous one:
+count.update(value => value + 1);
+    </pre>
+  </div>
+  <div class="col-4">
+    <h5>computed</h5>
+    <p>
+      Computed signal are read-only signals that derive their value from other signals. 
+      You define computed signals using the <code>computed</code> function and specifying a derivation:
+    </p>
+    <pre>
+const count: WritableSignal&lt;number&gt; = signal(0);
+const doubleCount: Signal&lt;number&gt; 
+= computed(() => count() * 2);          
+    </pre>
+    <h6>Computed signals are both lazily evaluated and memoized</h6>
+    <p>
+      <code>doubleCount</code>'s derivation function does not run to calculate its value until the first time you read <code>doubleCount</code>. 
+      The calculated value is then cached, and if you read <code>doubleCount</code> again, it will return the cached value without 
+      recalculating.
+    </p>
+    <p>
+      If you then change count, Angular knows that <code>doubleCount</code>'s cached value is no longer valid, and the next time 
+      you read <code>doubleCount</code> its new value will be calculated.
+    </p>
+    <p>
+      As a result, you can safely perform computationally expensive derivations in computed signals, such as 
+      filtering arrays.
+    </p>
+    <h6>Computed signals are read-only.</h6>
+    <p>
+      You can't do this:
+    </p>
+    <pre>
+doubleCount.set(3);        
+    </pre>
+    <h6>Computed signal dependencies are dynamic</h6>
+    <p>
+      
+    </p>
+  </div>
+  <div class="col-4">
+    <h5>effect (still in Developer Preview)</h5>
+    <p>
+      We won't go into too much details on this, as it's still in developer preview. An effect is an operation that runs 
+      whenever one or more signal values change. You can create an effect with the <code>effect</code> function:
+    </p>
+    <pre>
+effect(() => {{'{'}}
+console.log(`The current count is: ${{'{'}}count(){{'}'}}`);
+{{'}'}});          
+    </pre>
+    <p>
+      Effects always run at least once. When an effect runs, it tracks any signal value reads. Whenever any of these 
+      signal values change, the effect runs again. Similar to computed signals, effects keep track of their 
+      dependencies dynamically, and only track signals which were read in the most recent execution.
+    </p>
+    <p>
+      Effects always execute asynchronously, during the change detection process.        
+    </p>
+  </div>
+</div>
+
+<div class="row mt-4 mb-4">
+  <div class="col-6"><button routerLink="/image-optimization" class="btn btn-primary">Previous: Image Optimization</button>
+  </div>
+  <div class="col-6 text-end"><button routerLink="/signals-with-on-push" class="btn btn-primary">Next: Signals with OnPush Components</button></div>
+</div>

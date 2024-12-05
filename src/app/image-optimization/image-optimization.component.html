@@ -1,0 +1,59 @@
+<h2>Image Optimization</h2>
+<div class="row">
+  <div class="col-12">
+    <img style="z-index: -1;" ngSrc="/van-halen.png" fill>
+  </div>
+</div>
+
+<div class="row widget">
+  <div class="col-12">
+    <p>
+      This one's a big topic to get into, so this will just be an overview. Angular provides the <span
+        style="font-style: italic;">NgOptimizedImage</span> directive to help
+      with image loading. It does this in a few ways:<br /><br />
+      <li>Allowing you to specify which images have priority (Largest Contentful Paint images)</li>
+      <li>Lazily loading other images by default</li>
+      <li>Automatically generating tags and attriubtes to aid in performant image loading</li>
+      <li>Requiring size attributes (helps prevent layout shift)</li>
+      <li>Warning you if an image will be distorted</li>
+    </p>
+    <p>
+      You can read more about it <a href="https://angular.dev/guide/image-optimization" target="_blank">here</a>.
+    </p>
+    <p>
+      In the example shown here, the 2nd picture below was determined to be the Largest Contentful Paint image and is loaded with priority.
+      The other images are lazily loaded.
+    </p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-3">
+    <img ngSrc="/dave.png" width="285" height="357">
+  </div>
+  <div class="col-3">
+    <img ngSrc="/edward.jpg" width="300" height="350" priority>
+  </div>
+  <div class="col-3">
+    <img ngSrc="/mike.png" width="300" height="350">
+  </div>
+  <div class="col-3">
+    <img ngSrc="/alex.png" width="300" height="350">
+  </div>
+</div>
+
+<div class="row mt-4 mb-4">
+  <div class="col-6"><button routerLink="/on-push" class="btn btn-primary">Previous: On-Push Change Detection</button>
+  </div>
+  <div class="col-6 text-end"><button routerLink="/signals-intro" class="btn btn-primary">Next: Signals</button></div>
+</div>
+
+<div class="row mt-4">
+  <h4>Don't forget these guys!</h4>
+  <div class="col-6 text-center">
+    <img ngSrc="/sammy.jpg" width="300" height="300">
+  </div>
+  <div class="col-6 text-center">
+    <img ngSrc="/gary.jpg" width="300" height="350">
+  </div>
+</div>
