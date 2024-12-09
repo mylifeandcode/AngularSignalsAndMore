@@ -4,10 +4,13 @@ import { StarshipService } from './starship.service';
 import { NgClass } from '@angular/common';
 import { OnPushExerciseComponent } from './on-push-exercise/on-push-exercise.component';
 import { OnPushWithSignalsExerciseComponent } from './on-push-with-signals-exercise/on-push-with-signals-exercise.component';
+import { SignalInputExerciseComponent } from './signal-input-exercise/signal-input-exercise.component';
+import { ModelInputExerciseComponent } from './model-input-exercise/model-input-exercise.component';
 
 @Component({
   selector: 'app-exercise',
-  imports: [RouterLink, NgClass, OnPushExerciseComponent, OnPushWithSignalsExerciseComponent],
+  imports: [RouterLink, NgClass, 
+    OnPushExerciseComponent, OnPushWithSignalsExerciseComponent, SignalInputExerciseComponent, ModelInputExerciseComponent],
   templateUrl: './exercise.component.html',
   styleUrl: './exercise.component.scss'
 })
@@ -25,7 +28,7 @@ export class ExerciseComponent {
       this._starshipService.powerOn();
   }
 
-  public shipStatusChange($event: any): void {
+  public shipStatusChange($event: Event): void {
     window.alert('You should do something here.');
   }
 }

@@ -7,7 +7,7 @@
   <div class="col-3">
     <h6>POWER</h6>
     <p>Refactor this component to use the new inject sytnax for StarshipService.</p>
-    <button (click)="toggelPower()" [ngClass]="powerOn() ? 'powerOn' : 'powerOff'">POWER</button>
+    <button (click)="toggelPower()" [ngClass]="powerOn() ? 'btn btn-success' : 'btn btn-dark'">POWER</button>
   </div>
 
   @if (powerOn()) {
@@ -26,9 +26,9 @@
   
       Status 
       <select (change)="shipStatusChange($event)">
-        <option>Normal</option>
-        <option>Yellow Alert</option>
-        <option>Red Alert</option>
+        <option value="N">Normal</option>
+        <option value="Y">Yellow Alert</option>
+        <option value="R">Red Alert</option>
       </select>
     </div>
 
@@ -49,6 +49,25 @@
       <h6>SYSTEM TIME</h6>
       <p>Modify this component to use OnPush change detection and ensure that the current time is (still) always changing.</p>
       <app-on-push-with-signals-exercise />
+    </div>
+
+    <div class="col-3">
+      <h6>WEAPONS STATUS</h6>
+      <p>
+        Modify the component below to take a signal input to indicate whether or not weapons are armed. Weapons are armed when 
+        the ship is on Red Alert.
+      </p>
+      <app-signal-input-exercise />
+    </div>
+
+    <div class="col-3">
+      <h6>LIFE SUPPORT SYSTEMS</h6>
+      <button class="btn btn-danger">OVERRIDE LIFE SUPPORT</button>
+      <p>
+        Modify the component below to take a model signal using two-way binding to allow both the parent and child component 
+        to toggle the value.
+      </p>
+      <app-model-input-exercise />
     </div>
   </div>
 
