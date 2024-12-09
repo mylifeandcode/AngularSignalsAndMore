@@ -28,14 +28,22 @@ export const routes: Routes = [
   {
     path: 'signals-with-on-push',
     loadComponent: () => import('./signals-with-on-push/signals-with-on-push.component').then(c => c.SignalsWithOnPushComponent)
-  },  
+  },
   {
     path: 'signal-inputs',
     loadComponent: () => import('./signal-inputs/signal-inputs.component').then(c => c.SignalInputsComponent)
-  },  
+  },
   {
     path: 'model-inputs',
     loadComponent: () => import('./model-inputs/model-inputs.component').then(c => c.ModelInputsComponent)
+  },
+  {
+    path: 'signal-queries',
+    loadComponent: () => import('./signal-queries/signal-queries.component').then(c => c.SignalQueriesComponent)
+  },
+  {
+    path: 'exercise',
+    loadComponent: () => import('./exercise/exercise.component').then(c => c.ExerciseComponent)
   },  
   {
     path: '**',

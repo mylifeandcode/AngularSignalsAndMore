@@ -17,7 +17,7 @@ export class OnPushExampleComponent implements OnDestroy {
   private _timer: ReturnType<typeof setInterval>;
 
   constructor() {
-    this._timer =  setInterval(() => {
+    this._timer = setInterval(() => {
       this.currentTime = new Date().toLocaleTimeString();
       console.log('Current Time: ', this.currentTime);
     }, 1000);

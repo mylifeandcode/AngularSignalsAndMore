@@ -1,3 +1,4 @@
+<h5>Model Inputs</h5>
 <p>
   Model inputs are signal inputs that let you propagate new values back to the parent component.
 </p>
@@ -7,11 +8,82 @@
 <p>
   You can bind to a signal or a regular JavaScript variable.
 </p>
+<p>
+  Here's how a component would declare a model input, and update its value (example stolen from the official docs):
+</p>
+<pre>
+&#64;Component({{'{'}} /* ... */{{'}'}})
+export class CustomSlider {{'{'}}
+  // Define a model input named "value".
+  value = model(0);
+  increment() {{'{'}}
+    // Update the model input with a new value, propagating the value to any bindings. 
+    this.value.update(oldValue => oldValue + 10);
+  {{'}'}}
+{{'}'}}
+</pre>
+<p>
+  Binding to this value works the same was as it does for the original-style inputs. In this example (also stolen from the 
+  official docs), a parent component makes use of the example component shown above, and creates the local signal it binds to:
+</p>
+<pre>
+&#64;Component({{'{'}}
+  /* ... */
+  // Using the two-way binding syntax means that any changes to the slider's
+  // value automatically propagate back to the `volume` signal.
+  // Note that this binding uses the signal *instance*, not the signal value.
+  template: `&lt;custom-slider [(value)]="volume" /&gt;`,
+{{'}'}})
+export class MediaControls {{'{'}}
+  // Create a writable signal for the `volume` local state. 
+  volume = signal(0);
+{{'}'}}
+</pre>
+<p>
+  Note that in the example above, the value being passed to the child component is a <em>signal</em>, not the 
+  <em>value</em> of a signal. But you can also bind plain JavaScript values to model inputs. Here's a revised 
+  example of the component above, but this time using a plain JavaScript value to bind to the model input on 
+  the child component:
+</p>
+<pre>
+&#64;Component({{'{'}}
+  /* ... */
+  // `value` is a model input.
+  // The parenthesis-inside-square-brackets syntax (aka "banana-in-a-box") creates a two-way binding
+  template: `&lt;custom-slider [(value)]="volume" /&gt;`,
+{{'}'}})
+export class MediaControls {{'{'}}
+  protected volume = 0;
+{{'}'}}
+</pre>
+<p>
+  When you create a model input, a corresponding <em>output</em> is automatically created for you. The name 
+  of the output is the same name as the input, just suffixed with "Change" at the end of it. Here's another 
+  example from the official docs that illustrates this:
+</p>
+<pre>
+&#64;Directive({{'{'}} /* ... */{{'}'}})
+export class CustomCheckbox {{'{'}}
+  // This automatically creates an output named "checkedChange".
+  // Can be subscribed to using `(checkedChange)="handler()"` in the template.
+  checked = model(false);
+{{'}'}}
+</pre>
+<p>
+  You can mark a model input as required or provide it an alias, but they do not support input transforms.
+</p>
+<h6>When Should We Use These?</h6>
+<p>
+  According to the official docs, "Use model inputs when you want a component to support two-way binding. 
+  This is typically appropriate when a component exists to modify a value based on user interaction. 
+  Most commonly, custom form controls, such as a date picker or combobox, should use model inputs for their 
+  primary value."
+</p>
 <div class="row mt-4 mb-4">
   <div class="col-6 text-start">
     <button routerLink="/signal-inputs" class="btn btn-primary">Previous: Signals Inputs</button>
   </div>
   <div class="col-6 text-end">
-    <button routerLink="/" class="btn btn-primary">Next: TODO</button>
+    <button routerLink="/signal-queries" class="btn btn-primary">Next: Signal Queries</button>
   </div>
 </div>

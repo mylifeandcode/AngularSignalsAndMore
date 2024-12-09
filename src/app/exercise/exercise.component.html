@@ -1,0 +1,80 @@
+<h5>A Learning Exercise: Starship Control Panel</h5>
+<p>
+  To help retain the info we've gone over today, here's an exercise to put each of these topics to use. Please complete the tasks 
+  below to finish this exercise.
+</p>
+<div class="row">
+  <div class="col-3">
+    <h6>POWER</h6>
+    <p>Refactor this component to use the new inject sytnax for StarshipService.</p>
+    <button (click)="toggelPower()" [ngClass]="powerOn() ? 'powerOn' : 'powerOff'">POWER</button>
+  </div>
+
+  @if (powerOn()) {
+    <div class="col-3">
+      <h6>SYSTEM CHECK</h6>
+      <p>
+        Change the component below to use OnPush change detection. 
+        The current time should only be displayed when the user clicks "SYSTEM CHECK".
+      </p>
+      <app-on-push-exercise />
+    </div>
+
+    <div class="col-3">
+      <h6>SHIP STATUS</h6>
+      <p>Create an <em>onAlert</em> signal which will emit <em>true</em> if the ship is on yellow or red alert, and false otherwise.</p>
+  
+      Status 
+      <select (change)="shipStatusChange($event)">
+        <option>Normal</option>
+        <option>Yellow Alert</option>
+        <option>Red Alert</option>
+      </select>
+    </div>
+
+    <div class="col-3">
+      <h6>SHIELDS</h6>
+      <p>Create a <em>shieldStatus</em> computed signal which will compute using the <em>onAlert</em> signal and will emit <em>true</em> if the ship is on yellow or red alert, and false otherwise.</p>
+  
+      Shield Status: UNKNOWN<br />(CALL shieldStatus SIGNAL HERE)
+    </div>
+
+  }
+</div>
+
+@if (powerOn()) {
+
+  <div class="row mt-4">
+    <div class="col-3">
+      <h6>SYSTEM TIME</h6>
+      <p>Modify this component to use OnPush change detection and ensure that the current time is (still) always changing.</p>
+      <app-on-push-with-signals-exercise />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <h6>SHIP SCHEMATICS</h6>
+    <p>Use NgImageOptimizer to resize these images so all appear without overlap in this row and without any errors in the console.</p>
+    <div class="col-3">
+      <img src="/blueprints-2.jpg">
+    </div>
+    <div class="col-3">
+      <img src="/blueprints-3.jpg">
+    </div>
+    <div class="col-3">
+      <img src="/blueprints-4.jpg">
+    </div>
+    <div class="col-3">
+      <img src="/blueprints-5.jpg">
+    </div>    
+  </div>
+
+
+}
+
+<div class="row mt-4 mb-4">
+  <div class="col-6 text-start">
+    <button routerLink="/signal-queries" class="btn btn-primary">Previous: Signal Queries</button>
+  </div>
+</div>
+
