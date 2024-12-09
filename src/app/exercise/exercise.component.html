@@ -36,7 +36,7 @@
       <h6>SHIELDS</h6>
       <p>Create a <em>shieldStatus</em> computed signal which will compute using the <em>onAlert</em> signal and will emit <em>true</em> if the ship is on yellow or red alert, and false otherwise.</p>
   
-      Shield Status: UNKNOWN<br />(CALL shieldStatus SIGNAL HERE)
+      Shield Status: {{shieldStatus()}}
     </div>
 
   }
@@ -57,17 +57,17 @@
         Modify the component below to take a signal input to indicate whether or not weapons are armed. Weapons are armed when 
         the ship is on Red Alert.
       </p>
-      <app-signal-input-exercise />
+      <app-signal-input-exercise [weaponsArmed]="weaponsArmed()" />
     </div>
 
     <div class="col-3">
       <h6>LIFE SUPPORT SYSTEMS</h6>
-      <button class="btn btn-danger">OVERRIDE LIFE SUPPORT</button>
+      <button (click)="overrideLifeSupport()" [ngClass]="lifeSupportEnabled() ? 'btn btn-danger' : 'btn btn-success'">OVERRIDE LIFE SUPPORT</button>
       <p>
         Modify the component below to take a model signal using two-way binding to allow both the parent and child component 
         to toggle the value.
       </p>
-      <app-model-input-exercise />
+      <app-model-input-exercise [(lifeSupportOn)]="lifeSupportEnabled" />
     </div>
   </div>
 

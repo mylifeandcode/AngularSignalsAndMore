@@ -1,10 +1,11 @@
-import { Component, signal, OnDestroy } from '@angular/core';
+import { Component, signal, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-on-push-with-signals-exercise',
   imports: [],
   templateUrl: './on-push-with-signals-exercise.component.html',
-  styleUrl: './on-push-with-signals-exercise.component.scss'
+  styleUrl: './on-push-with-signals-exercise.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnPushWithSignalsExerciseComponent implements OnDestroy {
   public readonly currentTime = signal<string>(new Date().toLocaleTimeString());

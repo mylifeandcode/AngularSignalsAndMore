@@ -1,4 +1,4 @@
-import { Component, WritableSignal } from '@angular/core';
+import { Component, WritableSignal, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StarshipService } from './starship.service';
 import { NgClass } from '@angular/common';
@@ -16,8 +16,13 @@ import { ModelInputExerciseComponent } from './model-input-exercise/model-input-
 })
 export class ExerciseComponent {
   protected powerOn: WritableSignal<boolean>;
-  
-  constructor(private _starshipService: StarshipService) { //TODO: Remove constructor injection and use new inject method
+  protected onAlert: WritableSignal<boolean> = signal(false);
+  protected shieldStatus = computed(() => this.onAlert() ? 'UP' : 'DOWN');
+  protected weaponsArmed: WritableSignal<boolean> = signal(false);
+  protected lifeSupportEnabled: WritableSignal<boolean> = signal(true);
+  private _starshipService: StarshipService = inject(StarshipService);
+
+  constructor() {
     this.powerOn = this._starshipService.power;
   }
 
@@ -29,6 +34,15 @@ export class ExerciseComponent {
   }
 
   public shipStatusChange($event: Event): void {
-    window.alert('You should do something here.');
+    const target = $event.target as HTMLSelectElement;
+    this.onAlert.set(target.value != 'N');
+    this.weaponsArmed.set(target.value == 'R');
+  }
+
+  public overrideLifeSupport(): void {
+    if (this.lifeSupportEnabled())
+      this.lifeSupportEnabled.set(false);
+    else
+      this.lifeSupportEnabled.set(true);
   }
 }
